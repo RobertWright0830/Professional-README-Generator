@@ -1,7 +1,5 @@
-//fix badge name
-//fix github/username
-//fix usage screenshot
-//try to fix wordwrap cursor problem
+//fix badge name*
+//fix github/username*
 
 // Packages needed for this application
 const inquirer = require('inquirer');
@@ -27,7 +25,7 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Provide USAGE instructions, including screenshots, in the following format ```md ![alt text](assets/images/filename.png) ```: ',
+        message: 'Provide USAGE instructions: ',
         name: 'usage',
     },
     {
@@ -49,7 +47,7 @@ const questions = [
     {
         type: 'input',
         message: 'Enter your GitHub username: ',
-        name: 'username',
+        name: 'githubUsername',
     },
     {
         type: 'input',
@@ -59,7 +57,13 @@ const questions = [
 ];
 
 //Function to write README file
-function writeToFile(fileName, data) {
+function writeToFile(title, data) {
+    const randomNumber = Math.floor(Math.random() * 10000);
+    const folderName = `${title}_${randomNumber}`
+    const fileName = `${folderName}/README.md`;
+    
+    fs.mkdirSync(folderName);
+
     fs.writeFile(fileName, data, (err) =>
     err ? console.error(err) : console.log('Success!')
     );
@@ -71,7 +75,7 @@ function init() {
         .prompt(questions)
         .then((responses) => {
             const readmeInformation = generateMarkdown(responses);
-            writeToFile('new_README.md', readmeInformation);
+            writeToFile(responses.title, readmeInformation);
         });
 }
 
