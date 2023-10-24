@@ -6,6 +6,8 @@
 
   ## Description
   This is a command-line application that generates a high-quality, professional README.md file for your project.  It will prompt you for information about your application and use that information to create a README file.
+
+ [Walkthrough Video](https://1drv.ms/u/s!AhZ_L0CGr9AngfRwuxPEkxw_KI-VQA?e=4YOn9z)
   
   ## Table of Contents
   - [Installation](#installation)
